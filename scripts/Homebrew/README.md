@@ -1,6 +1,6 @@
 # Homebrew package installer script
 
-### InstallHomebrewPackage.bash
+### InstallHomebrewPackage.sh
 
 This script is made for use in Jamf Pro.
 

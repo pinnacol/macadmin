@@ -12,7 +12,10 @@
 # Uncomment line below for debugging
 #set -x
 
-expected_team_ID="6248TWFRH6"
+# Homebrew package signing changed in v4.3.9 from Mike McQuaid to Patrick Linnane
+# https://infosec.exchange/@shuu/112803268733080002
+#expected_team_ID="6248TWFRH6"
+expected_team_ID="927JGANW46"
 xcode_tools_event="${4}"
 
 err() {

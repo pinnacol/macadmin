@@ -154,7 +154,7 @@ fi
 
 
 # Add install script
-cat > "${csc_dst_tmp}InstallCiscoSecureClient-${org}.sh" << EOF
+cat > "${csc_dst_tmp}/InstallCiscoSecureClient-${org}.sh" << EOF
 #!/bin/bash
 cd "\$(dirname "\$0")" || exit 1
 core_vpn_pkg=\$(find . -name '*core-vpn*.pkg')
@@ -165,7 +165,7 @@ for pkg in \$other_pkgs; do
 done
 EOF
 
-/bin/chmod 755 "${csc_dst_tmp}InstallCiscoSecureClient-${org}.sh"
+/bin/chmod 755 "${csc_dst_tmp}/InstallCiscoSecureClient-${org}.sh"
 
 # Debug step
 #open ${csc_dst_tmp}

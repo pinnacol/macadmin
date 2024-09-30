@@ -30,6 +30,8 @@ disable_customer_experience_feedback=0
 umbrella_organizationId=""
 umbrella_fingerprint=""
 umbrella_userId=""
+# Optional Umbrella configuration
+umbrella_noNXDOMAIN="0"
 
 # Uncomment line below for debugging
 #set -x
@@ -156,13 +158,19 @@ fi
 # Umbrella Profile
 # Set organizational values for organizationId, fingerprint, and userId
 if [[ -n "${umbrella_organizationId}" && -n "${umbrella_fingerprint}" && -n "${umbrella_userId}" ]]; then
-cat > "${mount_point}/Profiles/umbrella/OrgInfo.json" << EOF
+  orginfo_path="${mount_point}/Profiles/umbrella/OrgInfo.json"
+  cat > "${orginfo_path}" << EOF
 {
     "organizationId" : "${umbrella_organizationId}",
     "fingerprint" : "${umbrella_fingerprint}",
     "userId" : "${umbrella_userId}"
 }
 EOF
+
+  if [[ "${umbrella_noNXDOMAIN}" == "1" ]]; then
+    /usr/bin/plutil -insert noNXDOMAIN -string 1 -r "${orginfo_path}"
+  fi
+
 fi
 
 

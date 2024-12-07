@@ -11,14 +11,14 @@
 #
 # Arguments:
 #   NONE
+# Configuration
+# Label of the launch daemon
+launch_daemon_name="com.pinnacol.inventoryOnZRUpdate"
+# Inventory command that runs after an automatic update
+inventory_command="/usr/local/jamf/bin/jamf recon -randomDelaySeconds 300"
 
 # Uncomment line below for debugging
 #set -x
-
-
-# Configuration
-launch_daemon_name="com.pinnacol.inventoryOnZRUpdate"
-inventory_command="/usr/local/jamf/bin/jamf recon -randomDelaySeconds 300"
 
 # Set launch daemon path
 launch_daemon_path="/Library/LaunchDaemons/${launch_daemon_name}.plist"

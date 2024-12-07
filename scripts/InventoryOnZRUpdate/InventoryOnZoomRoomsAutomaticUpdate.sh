@@ -35,7 +35,7 @@ cat > "${launch_daemon_path}" << EOF
 	<array>
 		<string>/bin/sh</string>
 		<string>-c</string>
-		<string>[[ -f /Library/Logs/us.zoom.ZoomRoomUpdateRecord ]] || exit; until pgrep -qx ZoomPresence; do sleep 2; done; $inventory_command</string>
+		<string>[ -f /Library/Logs/us.zoom.ZoomRoomUpdateRecord ] || exit; until pgrep -qx ZoomPresence; do sleep 2; done; $inventory_command</string>
 	</array>
 	<key>WatchPaths</key>
 	<array>

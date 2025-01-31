@@ -21,6 +21,12 @@ if [[ ${major_os} -lt 15 ]]; then
   exit 1
 fi
 
+arch=$(arch)
+if [[ "$arch" != "arm64" ]]; then
+  err "This script requires Apple silicon"
+  exit 1
+fi
+
 if [[ ! -f /usr/local/bin/dialog ]]; then
   err "This script requires swiftDialog"
   exit 1

@@ -14,6 +14,11 @@ err() {
   echo "ERROR: $*" >&2
 }
 
+if [[ $(id -u) -ne 0 ]]; then
+  err "Run this script as root or using sudo"
+  exit 1
+fi
+
 # Must run on macOS Sequoia 15
 major_os=$(/usr/bin/sw_vers --productVersion | /usr/bin/cut -d . -f 1)
 if [[ ${major_os} -lt 15 ]]; then

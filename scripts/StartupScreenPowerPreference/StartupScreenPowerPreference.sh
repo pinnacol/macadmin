@@ -21,8 +21,7 @@ if [[ ${major_os} -lt 15 ]]; then
   exit 1
 fi
 
-arch=$(arch)
-if [[ "$arch" != "arm64" ]]; then
+if [[ $(arch) != "arm64" ]]; then
   err "This script requires Apple silicon"
   exit 1
 fi

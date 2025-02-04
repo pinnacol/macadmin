@@ -31,6 +31,12 @@ if [[ $(arch) != "arm64" ]]; then
   exit 1
 fi
 
+battery_present=$(/usr/sbin/ioreg -c AppleSmartBattery -r | awk '/BatteryInstalled/ {print $NF}')
+if [[ "${battery_present}" != "Yes" ]]; then
+  err "This script should only be run on an Apple laptop"
+  exit 1
+fi
+
 if [[ ! -f /usr/local/bin/dialog ]]; then
   err "This script requires swiftDialog"
   exit 1

@@ -24,7 +24,7 @@ Process overview:
 - Optionally, profiles can be added.
 - An install script that uses the choice changes XML file is added to the disk image.
 
-Tested on Cisco Secure Client 5.1.1.42 and 5.0.05040. (Does not work with AnyConnect 4.10.x)
+Tested on Cisco Secure Client 5.0.05040 and most versions of 5.1 up to 5.1.13. (Does not work with AnyConnect 4.10.x)
 
 ## CSCRepackageWebdeploy.sh
 
@@ -63,8 +63,10 @@ org="pinnacol"
 Uncomment the `selected_choices` line and define the array of choices that will be installed
 
 ```
-selected_choices=("choice_dart" "choice_secure_umbrella")
+selected_choices=("choice_ui" "choice_dart" "choice_secure_umbrella")
 ```
+
+**Note:** As of Cisco Secure Client 5.1.13, the Cisco Secure Client.app UI is optional and must be enabled by specifying `choice_ui` in the `selected_choices` array.
 
 #### Modules (CSCRepackageWebdeploy.sh)
 

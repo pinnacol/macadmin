@@ -5,7 +5,7 @@
 # based on a webdeploy pkg (zip file) with profiles
 #
 # Fraser Hess
-# © Pinnacol Assurance 2024
+# © Pinnacol Assurance 2024-25
 #
 # Arguments:
 #   $1 - path to a Cisco Secure Client webdeploy pkg
@@ -15,7 +15,7 @@
 # Organization identifier
 org="acme"
 # Additional modules. core-vpn module is always included
-# Valid modules in 5.1.1.42 are: dart, ampenabler, posture, iseposture, nvm, umbrella
+# Valid modules in 5.1.13.177 are: dart, posture, iseposture, nvm, umbrella, zta
 #modules=("dart" "umbrella")
 # choose whether or not to fail on an invalid module
 fail_on_invalid=1

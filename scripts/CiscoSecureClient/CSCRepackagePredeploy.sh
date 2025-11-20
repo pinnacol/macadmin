@@ -5,7 +5,7 @@
 # based on a predeploy dmg with profiles, and a choices xml file for installer(8)
 #
 # Fraser Hess
-# © Pinnacol Assurance 2023-2024
+# © Pinnacol Assurance 2023-2025
 #
 # Arguments:
 #   $1 - path to a Cisco Secure Client predeploy dmg
@@ -15,14 +15,17 @@
 # Organization identifier
 org="acme"
 # Additional choices. choice_anyconnect_vpn is always included
-# Valid choices in 5.1.1.42 are:
-# choice_fireamp, choice_dart, choice_secure_firewall_posture, choice_iseposture,
-# choice_nvm, choice_secure_umbrella, choice_thousandeyes, choice_duo, choice_zta
-#selected_choices=("choice_dart" "choice_secure_umbrella")
+# Valid choices in 5.1.13.177 are:
+# choice_dart, choice_secure_firewall_posture, choice_iseposture, choice_nvm, 
+# choice_secure_umbrella, choice_thousandeyes, choice_duo, choice_zta, choice_ui
+#selected_choices=("choice_ui" "choice_dart" "choice_secure_umbrella")
+
 # choose whether or not to fail on an invalid choice
 fail_on_invalid=1
+
 # Disable VPN client
 disable_vpn=0
+
 # Disable Customer Experience Feedback
 disable_customer_experience_feedback=0
 

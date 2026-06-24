@@ -2,7 +2,7 @@
 
 This Google Apps Script will create Google Chat cards from Jamf Setup Manager webhooks. Setup Manager can send [webhooks](https://github.com/jamf/Setup-Manager/blob/main/Docs/Webhooks.md) at the beginning and end of its process. As of writing, none of the current webhook formats in JSM work in Google Chat. This script fixes that by ingesting a generic JSM webhook and posting formatted cards to a Google Chat space.
 
-Insert demo image here
+<img src="ChatCards.png" width="457" border=1>
 
 ## Requirements
 

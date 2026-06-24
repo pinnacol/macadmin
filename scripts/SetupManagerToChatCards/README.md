@@ -15,7 +15,7 @@ Insert demo image here
 1. Create a Google Chat space or use an existing one
 1. In **Apps & integrations** for the space, add a webhook. Name it 'Setup Manager' and use `https://github.com/jamf/Setup-Manager/blob/main/Images/SetupManager250.png?raw=true` as the Avatar URL. (Google Chat will cache the image.)
 1. While logged in as your Google Workspace account, go to https://script.google.com in a browser
-1. Create a new project, giving it an approripriate name such as 'Setup Manager to Chat Cards'
+1. Create a new project, giving it an appropriate name such as 'Setup Manager to Chat Cards'
 1. Paste the contents of [Code.gs](Code.gs) including the `doPost`, `errorAndExit` and `sha512` functions
 1. Click on the **Project Settings** cogwheel on the left, scroll down to **Script Properties** and add the following:
    1. A `chatWebhookURL` property, copying the link from the 3 dot menu next to the webhook created in step 2 as the value
@@ -39,7 +39,7 @@ Add the secret key generated above:
 
 `https://script.google.com/a/macros/domain.com/s/XXXXXXXXXXX/exec?key=iguessyougotyourhooksinme`
 
-This URL can be used your Setup Manager configuration profile. Example:
+Use this URL in a Setup Manager configuration profile. Example:
 
 ```
 <key>webhooks</key>

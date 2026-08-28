@@ -132,27 +132,33 @@ function doPost(e) {
         'text': dateFormatter.format(finishedDate)
       }
     })
-    card.cardsV2[0].card.sections[0].widgets.push({
-      'decoratedText': {
-        'topLabel': 'Computer Name',
-        'text': postData.computerName
-      }
-    })
-    var userEntry = []
-    for (const [key, value] of Object.entries(postData.userEntry)) {
-      userEntry.push({
+    if (postData.computerName) {
+      card.cardsV2[0].card.sections[0].widgets.push({
         'decoratedText': {
-          'topLabel': 'userEntry.' + key,
-          'text': value
+          'topLabel': 'Computer Name',
+          'text': postData.computerName
         }
       })
     }
-    if (userEntry.length > 0) {
-      card.cardsV2[0].card.sections[0].widgets.push({
-        'divider': {}
-      })
-      card.cardsV2[0].card.sections[0].widgets.push(...userEntry)
+
+    if (postData.userEntry) {
+      var userEntry = []
+      for (const [key, value] of Object.entries(postData.userEntry)) {
+        userEntry.push({
+          'decoratedText': {
+            'topLabel': 'userEntry.' + key,
+            'text': value
+          }
+        })
+      }
+      if (userEntry.length > 0) {
+        card.cardsV2[0].card.sections[0].widgets.push({
+          'divider': {}
+        })
+        card.cardsV2[0].card.sections[0].widgets.push(...userEntry)
+      }
     }
+
     var successfulActions = []
     var failedActions = []
     for (const idx in postData.enrollmentActions) {

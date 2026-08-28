@@ -35,7 +35,14 @@ function doPost(e) {
   })
 
   // Authentication
-  const clientSuppliedKey = e.parameter.key
+  let clientSuppliedKey
+  try {
+    clientSuppliedKey = e.parameter.key
+  } catch (x) {
+    console.error(x)
+    return errorAndExit('Error 2: Failed to authenticate')
+  }
+
   if (!clientSuppliedKey || !secretKeySHA512 || sha512(clientSuppliedKey) != secretKeySHA512) {
     return errorAndExit('Error 2: Failed to authenticate')
   }

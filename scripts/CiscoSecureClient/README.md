@@ -24,7 +24,7 @@ Process overview:
 - Optionally, profiles can be added.
 - An install script that uses the choice changes XML file is added to the disk image.
 
-Tested on Cisco Secure Client 5.0.05040 and most versions of 5.1 up to 5.1.13. (Does not work with AnyConnect 4.10.x)
+Tested on Cisco Secure Client 5.0.05040 and most versions of 5.1 up to 5.1.20. (Does not work with AnyConnect 4.10.x)
 
 ## CSCRepackageWebdeploy.sh
 
@@ -44,7 +44,7 @@ Process overview:
 - Optionally, profiles can be added.
 - A script that installs the installer packages in the correct order is added.
 
-Tested on Cisco Secure Client 5.1.1.42, 5.0.05040, and AnyConnect 4.10.08025.
+Tested on Cisco Secure Client 5.0.05040, most versions of 5.1 up to 5.1.20, and AnyConnect 4.10.08025.
 
 ### Configuration
 

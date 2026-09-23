@@ -5,7 +5,7 @@
 # based on a webdeploy pkg (zip file) with profiles
 #
 # Fraser Hess
-# © Pinnacol Assurance 2024-25
+# © Pinnacol Assurance 2024-26
 #
 # Arguments:
 #   $1 - path to a Cisco Secure Client webdeploy pkg
@@ -80,12 +80,12 @@ for mod in "${modules[@]}"; do
     err "invalid module: $mod"
     exit 1
   fi
-  if ! /usr/bin/hdiutil attach -nobrowse -mountpoint "${mount_point}" "${csc_src_tmp}/${dmg_rel_path}"; then
+  if ! /usr/sbin/diskutil image attach --nobrowse --mountPoint "${mount_point}" "${csc_src_tmp}/${dmg_rel_path}"; then
     err "failed to mount ${csc_src_tmp}/${dmg_rel_path}"
     exit 1
   fi
   cp "${mount_point}"/*.pkg "${csc_dst_tmp}"
-  hdiutil detach "${mount_point}"
+  /usr/sbin/diskutil eject "${mount_point}"
 done
 
 
@@ -182,7 +182,7 @@ EOF
 # Create compressed read-only organizational disk image
 org_dmg_path="${org_pkg_dir}/${org_pkg_base}-${org}.dmg"
 
-if ! /usr/bin/hdiutil create -fs HFS+ -format UDZO -volname "${org_pkg_base}-${org}" -srcfolder "${csc_dst_tmp}" "${org_dmg_path}" ; then
+if ! /usr/sbin/diskutil image create from --format UDZO --volname "${org_pkg_base}-${org}" "${csc_dst_tmp}" "${org_dmg_path}"; then
   err "failed to create organizational disk image"
   exit 1
 fi

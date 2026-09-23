@@ -61,7 +61,7 @@ org_dmg_base=$(basename "${csc_dmg_path}" .dmg)
 rw_dmg_path="${org_dmg_dir}/${org_dmg_base}-rw.dmg"
 
 # Make a read-write disk image
-if ! /usr/bin/hdiutil convert "${csc_dmg_path}" -format UDRW -o "${rw_dmg_path}"; then
+if ! /usr/sbin/diskutil image create from --format UDRW "${csc_dmg_path}" "${rw_dmg_path}"; then
   err "failed to create read-write disk image"
   exit 1
 fi
@@ -69,7 +69,7 @@ fi
 
 # Mount the read-write disk image
 mount_point=$(/usr/bin/mktemp -d)
-/usr/bin/hdiutil attach -nobrowse -mountpoint "${mount_point}" "${rw_dmg_path}"
+/usr/sbin/diskutil image attach --nobrowse --mountPoint "${mount_point}" "${rw_dmg_path}"
 
 
 # Remove Cisco branding
@@ -93,7 +93,7 @@ if [[ ${fail_on_invalid} -eq 1 ]]; then
     if ! echo "${choices}" | grep -Eq "^${potential_choice}\$"; then
       err "invalid choice: ${potential_choice}"
       printf "Valid choices:\n%s" "${choices}"
-      /usr/bin/hdiutil detach "${mount_point}"
+      /usr/sbin/diskutil eject "${mount_point}"
       /bin/rm "${rw_dmg_path}"
       exit 1
     fi
@@ -196,13 +196,13 @@ EOF
 
 
 # Unmount read-write disk image
-/usr/bin/hdiutil detach "${mount_point}"
+/usr/sbin/diskutil eject "${mount_point}"
 
 
 # Create compressed read-only organizational disk image
 org_dmg_path="${org_dmg_dir}/${org_dmg_base}-${org}.dmg"
 
-if ! /usr/bin/hdiutil convert "${rw_dmg_path}" -format UDZO -o "${org_dmg_path}"; then
+if ! /usr/sbin/diskutil image create from --format UDZO "${rw_dmg_path}" "${org_dmg_path}"; then
   err "failed to create organizational disk image"
   exit 1
 fi
